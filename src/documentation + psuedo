@@ -1,0 +1,98 @@
+/* Description: There is a dealer and a player. Player will use perfect strategy to hopefully get some winnings.
+     * Casino rules will be replicated: 8 decks in total deck. 2500 games will be played to see the long term course of
+     * perfect strategy
+     *
+     * Methods:
+     * ArrayList <Cards> initCards();
+     * - This will initialize a card deck (Arraylist of cards), and return it.
+     *
+     * Card getCard();
+     * - This will get a pick a card randomly from global deck and return that. If out of cards,
+     * initCards() will be called again.
+     *
+     * boolean isSplit(Arraylist player)
+     * - This will look the players hand and determine whether or not to split.
+     *
+     * String determineNextMove(Card player1, Card player2, Card Dealer1);
+     * - This will choose the next play for the player based on given cards. this will use perfect strategy can return
+     *   Hit, stay, Double, blackjack. MAKE SURE DOUBLE CANNOT BE RETURNED IF THERE ARE 3 OR MORE CARDS
+     *
+     * boolean bust(array list playerHand)
+     *  - true if player hand is busted, false if not
+     *
+     * Arraylist hit(Arraylist player hand)
+     * - This method will add a card to the player's hand, and return that card.
+     *
+     * Arraylist double(Arraylist playerhand)
+     * - Doubles the bet, gives one more card
+     *
+     * boolean isBlackJack(ArrayList playerhand)
+     * - true if hand is bj, false if not.
+     *
+     * boolean dealerHit(Arraylist dealerHand)
+     * - true if dealer needs to be hit. false if he stands.
+     *
+     * void playRound(Arraylist playerHand, Arraylist dealerHand)
+     * - This method will take player and dealer hands and play a game. First, player will go. His gameplay is determined
+     *   by determineNextMove. Dealer will play by casino rules. Outcomes are compared, and total cash is updated
+     *     if (isBlackJack(playerhand)) {
+     *       if (!isBlackjack(dealerhand)) {
+     *         totalcash = bet + 1.5*bet;
+     *         return
+     *       }
+     *       else {
+     *         return
+     *       }
+     *     }
+     *
+     *     if (isBlackJack(dealerhand)) {
+     *       if (!isBlackjack(playerhand)) {
+     *         return;
+     *       }
+     *       else {
+     *         totalcash += bet
+     *         return;
+     *       }
+     *     }
+     *
+     *     do {
+     *       String nextmove = determineNextMove();
+     *       switch (nextmove) {
+     *         case "hit": playerhand = hit(playerhand);
+     *           break;
+     *         case "double": double(playerhand);
+     *           break;
+     *       }
+     *     } while(nextMove!="stay" && !bust(playerHand) && nextMove!="double");
+     *
+     *     while (dealerHit(dealerhand)) {
+     *       dealerhand = hit(dealerhand)
+     *     }
+     *
+     *     //compare values and assign money accordingly
+
+     * pseudocode
+     *
+     * Arraylist <Card> = initCards() // global
+     * totalCash = 1000; // global
+     * bet = totalCash * 0.1 //global
+     * totalcash -= bet
+     *
+     * for loop (2500 times) {
+     *
+     *     Card <Arraylist> player hand = getCard x2
+     *     Card <Arraylist> dealer hand = getCard x2
+     *
+     *     if isSplit(player hand)
+     *       // split hand
+     *       String game1 = playRound(first deck, dealer hand)
+     *       String game2 = playRound(second deck, dealer hand)
+     *
+     *     else {
+     *       playRound(player hand, dealer hand)
+     *     }
+     * }
+     *
+     *
+     *
+     */
